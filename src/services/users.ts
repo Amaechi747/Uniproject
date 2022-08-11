@@ -25,7 +25,7 @@ const userServices: any = {
             return user;  
     },
     signToken: (id: string) => {
-        return jwt.sign(id, 'secret', {
+        return jwt.sign(id, `${process.env.secretKey}`, {
             expiresIn: 90
         })
     }
