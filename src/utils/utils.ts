@@ -21,10 +21,20 @@ const superAdminValidator = () => {
   });
 };
 
+const addPropertyValidator = () => {
+  return Joi.object({
+    name: Joi.string().required(),
+    location: Joi.string().required(),
+    type: Joi.string().required(),
+    price: Joi.number().required(),
+    description: Joi.string().required(),
+  });
+};
+
 const passwordHandler = async (password: string) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   return hashedPassword;
 };
 
-export { superAdminValidator, generateSuperAdminToken , passwordHandler};
+export { superAdminValidator, generateSuperAdminToken, passwordHandler, addPropertyValidator };
