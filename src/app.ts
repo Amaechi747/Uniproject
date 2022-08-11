@@ -2,14 +2,16 @@ import express, { NextFunction, Request, Response } from "express";
 import createError, { HttpError } from "http-errors";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
-import dotenv from "dotenv";
-const dotEnv = dotenv.config();
+import "dotenv/config";
+// const dotEnv = dotenv.config();
+
+
 import path from 'path';
 
 import indexRouter from'./routes/index';
 import usersRouter from './routes/users';
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,4 +42,4 @@ app.use(function(err: HttpError, req: Request, res: Response, next: NextFunction
   res.render('error');
 });
 
-module.exports = app;
+export default app;
