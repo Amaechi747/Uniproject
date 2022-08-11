@@ -4,22 +4,44 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('uniproject:server');
-var http = require('http');
-
+const app = require('../dist/app').default;
+const debug = require('debug')('uniproject:server');
+const http = require('http');
+const mongoose = require('mongoose')
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+//Database
+
+ const db = process.env.dbURI;
+
+ const dataBase = async function(){
+   try{
+     if (db !== undefined){
+         const isConnected = await mongoose.connect(db);
+         if(isConnected){
+           debug("DB is connected")
+         }
+     }
+   }catch(err){
+     
+     debug('Error: ', err)
+     //  throw new Error(`${error}`)
+   }
+ }
+ dataBase();
+
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+const server = http.createServer(app);
+
+
 
 /**
  * Listen on provided port, on all network interfaces.
