@@ -1,13 +1,21 @@
 // import './App.css';
 import { Routes, Route } from "react-router-dom"
-import { Signup } from './auth';
+import { Signup, Signin } from './auth';
+import { Home, About, Contact } from "./pages"
+import { Navbar, Footer } from "./components"
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
