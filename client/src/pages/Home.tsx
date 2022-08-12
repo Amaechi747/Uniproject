@@ -1,10 +1,16 @@
 import React from 'react'
+import { Slider, BannerSearch, FeaturedProperties } from "../components"
 
 type Props = {}
 
 const Home = (props: Props) => {
   return (
-    <div>Home</div>
+    <div>
+      
+      <Slider />
+      <BannerSearch />
+      <FeaturedProperties />
+    </div>
   )
 }
 
