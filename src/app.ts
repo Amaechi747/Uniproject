@@ -3,6 +3,7 @@ import createError, { HttpError } from "http-errors";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import "dotenv/config";
+import agentsRouter from "./routes/agentRoute";
 // const dotEnv = dotenv.config();
 
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/agents', agentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
