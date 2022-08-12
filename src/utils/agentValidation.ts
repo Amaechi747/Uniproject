@@ -7,7 +7,7 @@ const agentValidation = Joi.object({
     contactAddress: Joi.string().required(),
     phoneNumber: Joi.string().required(),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
-    confirmPassword: Joi.any().valid(Joi.ref('password')).required(),
+    confirmPassword: Joi.any().valid(Joi.ref('password=')).required(),
     role: Joi.string().required(),
     property: Joi.string()
 })
