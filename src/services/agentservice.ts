@@ -55,8 +55,15 @@ function getAgentById(id: string): Promise<output<AgentReg, unknown>> {
 }
 function updateAgent(id: string, agent: AgentReg): Promise<output<AgentReg, unknown>> {
     let agentOutput:output<AgentReg, unknown> = {result: dummyAgent, error: null};
-    return Agent.findByIdAndUpdate(id, agent).then((updatedAgent: any) => {
+    return Agent.findByIdAndUpdate(id, {name: agent.name, email: agent.email, contactAddress: agent.contactAddress, phoneNumber: agent.phoneNumber, password: agent.password, role: agent.role, property: agent.property}).then((updatedAgent: any) => {
         agentOutput.result = updatedAgent;
+        return agentOutput;
+    })
+}
+function deleteAgent(id: string): Promise<output<AgentReg, unknown>> {
+    let agentOutput:output<AgentReg, unknown> = {result: dummyAgent, error: null};
+    return Agent.findByIdAndDelete(id).then((deletedAgent: any) => {
+        agentOutput.result = deletedAgent;
         return agentOutput;
     }).catch((err) => {
         agentOutput.error = err;
@@ -64,4 +71,6 @@ function updateAgent(id: string, agent: AgentReg): Promise<output<AgentReg, unkn
     })
 }
 
-export default { createAgent, getAllAgents, getAgentById, updateAgent };
+
+
+export default {createAgent, getAllAgents, getAgentById, updateAgent, deleteAgent };
