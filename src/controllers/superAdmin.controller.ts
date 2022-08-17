@@ -5,10 +5,10 @@ import {
   generateSuperAdminToken,
   passwordHandler,
 } from "../utils/utils";
-import {
+const {
   createSuperHandler,
   findSuperUser,
-} from "../services/superAdmin.service";
+} = require("../services/superAdmin.service");
 
 const createSuperUser = asyncHandler(async (req: Request, res: Response) => {
   const { firstname, lastname, email, password, phone, confirmPassword } =
@@ -54,4 +54,4 @@ const createSuperUser = asyncHandler(async (req: Request, res: Response) => {
   });
 });
 
-export { createSuperUser };
+module.exports = { createSuperUser };

@@ -13,11 +13,9 @@ const superAdminValidator = () => {
     firstname: Joi.string().required(),
     lastname: Joi.string().required(),
     email: Joi.string().email().required(),
-    stack: Joi.string().required(),
-    squad: Joi.string().required(),
     password: Joi.string().required(),
     phone: Joi.string().required(),
-    confirmPassword: Joi.string().required(),
+    confirmPassword: Joi.ref("password"),
   });
 };
 
@@ -37,4 +35,9 @@ const passwordHandler = async (password: string) => {
   return hashedPassword;
 };
 
-export { superAdminValidator, generateSuperAdminToken, passwordHandler, addPropertyValidator };
+export {
+  superAdminValidator,
+  generateSuperAdminToken,
+  passwordHandler,
+  addPropertyValidator,
+};

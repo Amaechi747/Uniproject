@@ -1,4 +1,4 @@
-const SuperAdmin = require("../models/superAdmin");
+const SuperAdmin = require("../models/superAdmin.model");
 
 const createSuperHandler = async (
   firstname: string,
@@ -18,10 +18,8 @@ const createSuperHandler = async (
 };
 
 const findSuperUser = async () => {
-  const user = await SuperAdmin.find();
+  const user = await SuperAdmin.find({});
   return user;
 };
 
-export {
-  createSuperHandler, findSuperUser
-}
+module.exports = { createSuperHandler, findSuperUser };
