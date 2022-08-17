@@ -31,4 +31,4 @@ const superAdminData = superAdmin.Schema(
 
 const SuperAdmin = superAdmin.model("SuperUser", superAdminData);
 
-export { superAdmin };
+export default superAdmin ;

@@ -5,6 +5,7 @@ import {
   generateSuperAdminToken,
   passwordHandler,
 } from "../utils/utils";
+const Super = require('../models/superAdmin.model')
 import {
   createSuperHandler,
   findSuperUser,
@@ -13,6 +14,7 @@ import {
 const createSuperUser = asyncHandler(async (req: Request, res: Response) => {
   const { firstname, lastname, email, password, phone, confirmPassword } =
     req.body;
+console.log(req.body)
 
   await superAdminValidator().validateAsync({
     firstname: firstname,
@@ -28,11 +30,9 @@ const createSuperUser = asyncHandler(async (req: Request, res: Response) => {
     throw new Error("Passwords do not match");
   }
 
-  const existingData = await findSuperUser();
-  if (existingData.length > 0) {
-    res.status(401);
-    throw new Error("Super admin already exist");
-  }
+  const existingUser = await Super.findOne({email})
+
+  console.log(existingUser)
 
   const hashedPass = await passwordHandler(password);
   const createData = await createSuperHandler(
@@ -42,6 +42,7 @@ const createSuperUser = asyncHandler(async (req: Request, res: Response) => {
     hashedPass,
     phone
   );
+  console.log(createData)
 
   const token = generateSuperAdminToken(createData._id);
   res.cookie("Token", token);

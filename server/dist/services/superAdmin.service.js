@@ -8,11 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.findSuperUser = exports.createSuperHandler = void 0;
-const SuperAdmin = require("../models/superAdmin");
+const superAdmin_model_1 = __importDefault(require("../models/superAdmin.model"));
 const createSuperHandler = (firstname, lastname, email, hashedPass, phone) => __awaiter(void 0, void 0, void 0, function* () {
-    const createData = yield SuperAdmin.create({
+    const createData = yield superAdmin_model_1.default.create({
         firstname: firstname,
         lastname: lastname,
         email: email.toLowerCase(),
@@ -23,7 +26,7 @@ const createSuperHandler = (firstname, lastname, email, hashedPass, phone) => __
 });
 exports.createSuperHandler = createSuperHandler;
 const findSuperUser = () => __awaiter(void 0, void 0, void 0, function* () {
-    const user = yield SuperAdmin.find();
+    const user = yield superAdmin_model_1.default.find({});
     return user;
 });
 exports.findSuperUser = findSuperUser;

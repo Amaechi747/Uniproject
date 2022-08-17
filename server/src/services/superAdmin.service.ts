@@ -1,4 +1,6 @@
-const SuperAdmin = require("../models/superAdmin");
+import SuperAdmin from '../models/superAdmin.model'
+
+
 
 const createSuperHandler = async (
   firstname: string,
@@ -18,7 +20,7 @@ const createSuperHandler = async (
 };
 
 const findSuperUser = async () => {
-  const user = await SuperAdmin.find();
+  const user = await SuperAdmin.find({});
   return user;
 };
 

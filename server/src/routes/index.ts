@@ -1,10 +1,12 @@
 import express, { NextFunction, Request, Response } from "express";
+import {createSuperUser} from '../controllers/superAdmin.controller';
 
 const router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// router.post('/signup', signUp);
+
+router.post('/superadmin/create', createSuperUser);
+
 
 export default router;

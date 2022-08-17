@@ -14,7 +14,7 @@ const index_1 = __importDefault(require("./routes/index"));
 const users_1 = __importDefault(require("./routes/users"));
 const app = (0, express_1.default)();
 // view engine setup
-app.set('views', path_1.default.join(__dirname, 'views'));
+app.set('views', path_1.default.join(__dirname, '../dist/views'));
 app.set('view engine', 'ejs');
 app.use((0, morgan_1.default)('dev'));
 app.use(express_1.default.json());
@@ -32,9 +32,10 @@ app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
+    console.log(err);
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.json({ error: err.message });
 });
 exports.default = app;
 //# sourceMappingURL=app.js.map

@@ -1,11 +1,10 @@
 import express, { NextFunction, Request, Response } from "express";
+import {signUp} from '../services/users';
 
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req: Request, res: Response, next: NextFunction) {
-  res.send('respond with a resource');
-});
+router.post('/signup', signUp);
 
 
 

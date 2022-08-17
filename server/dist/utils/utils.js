@@ -24,11 +24,9 @@ const superAdminValidator = () => {
         firstname: Joi.string().required(),
         lastname: Joi.string().required(),
         email: Joi.string().email().required(),
-        stack: Joi.string().required(),
-        squad: Joi.string().required(),
         password: Joi.string().required(),
         phone: Joi.string().required(),
-        confirmPassword: Joi.string().required(),
+        confirmPassword: Joi.ref('password'),
     });
 };
 exports.superAdminValidator = superAdminValidator;

@@ -14,7 +14,7 @@ import usersRouter from './routes/users';
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../dist/views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
@@ -36,10 +36,10 @@ app.use(function(err: HttpError, req: Request, res: Response, next: NextFunction
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+console.log(err)
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({error: err.message});
 });
 
 export default app;
