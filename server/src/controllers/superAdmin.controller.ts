@@ -5,16 +5,14 @@ import {
   generateSuperAdminToken,
   passwordHandler,
 } from "../utils/utils";
-const Super = require('../models/superAdmin.model')
-import {
+const {
   createSuperHandler,
   findSuperUser,
-} from "../services/superAdmin.service";
+} = require("../services/superAdmin.service");
 
 const createSuperUser = asyncHandler(async (req: Request, res: Response) => {
   const { firstname, lastname, email, password, phone, confirmPassword } =
     req.body;
-console.log(req.body)
 
   await superAdminValidator().validateAsync({
     firstname: firstname,
@@ -30,9 +28,11 @@ console.log(req.body)
     throw new Error("Passwords do not match");
   }
 
-  const existingUser = await Super.findOne({email})
-
-  console.log(existingUser)
+  const existingData = await findSuperUser();
+  if (existingData.length > 0) {
+    res.status(401);
+    throw new Error("Super admin already exist");
+  }
 
   const hashedPass = await passwordHandler(password);
   const createData = await createSuperHandler(
@@ -42,7 +42,6 @@ console.log(req.body)
     hashedPass,
     phone
   );
-  console.log(createData)
 
   const token = generateSuperAdminToken(createData._id);
   res.cookie("Token", token);
@@ -55,4 +54,4 @@ console.log(req.body)
   });
 });
 
-export { createSuperUser };
+module.exports = { createSuperUser };

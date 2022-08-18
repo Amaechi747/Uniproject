@@ -4,9 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const users_1 = require("../services/users");
 const router = express_1.default.Router();
+const { createSuperUser } = require("../controllers/superAdmin.controller");
 /* GET users listing. */
-router.post('/signup', users_1.signUp);
+router.post("/superadmin/create", createSuperUser);
 exports.default = router;
 //# sourceMappingURL=users.js.map

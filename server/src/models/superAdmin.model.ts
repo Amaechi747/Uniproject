@@ -29,6 +29,6 @@ const superAdminData = superAdmin.Schema(
   }
 );
 
-const SuperAdmin = superAdmin.model("SuperUser", superAdminData);
 
-export default superAdmin ;
+
+module.exports = superAdmin.model("SuperUser", superAdminData);

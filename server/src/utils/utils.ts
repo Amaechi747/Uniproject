@@ -15,7 +15,7 @@ const superAdminValidator = () => {
     email: Joi.string().email().required(),
     password: Joi.string().required(),
     phone: Joi.string().required(),
-    confirmPassword: Joi.ref('password'),
+    confirmPassword: Joi.ref("password"),
   });
 };
 
@@ -35,4 +35,9 @@ const passwordHandler = async (password: string) => {
   return hashedPassword;
 };
 
-export { superAdminValidator, generateSuperAdminToken, passwordHandler, addPropertyValidator };
+export {
+  superAdminValidator,
+  generateSuperAdminToken,
+  passwordHandler,
+  addPropertyValidator,
+};

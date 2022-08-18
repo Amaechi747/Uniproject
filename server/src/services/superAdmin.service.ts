@@ -1,6 +1,4 @@
-import SuperAdmin from '../models/superAdmin.model'
-
-
+const SuperAdmin = require("../models/superAdmin.model");
 
 const createSuperHandler = async (
   firstname: string,
@@ -24,6 +22,4 @@ const findSuperUser = async () => {
   return user;
 };
 
-export {
-  createSuperHandler, findSuperUser
-}
+module.exports = { createSuperHandler, findSuperUser };

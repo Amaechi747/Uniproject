@@ -8,20 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const SuperAdmin = require("../models/superAdmin.model");
-const createSuperHandler = (firstname, lastname, email, hashedPass, phone) => __awaiter(void 0, void 0, void 0, function* () {
-    const createData = yield SuperAdmin.create({
-        firstname: firstname,
-        lastname: lastname,
-        email: email.toLowerCase(),
-        password: hashedPass,
-        phone: phone,
-    });
-    return createData;
+const mongoose = require("mongoose");
+const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log("fire server");
+        const conn = yield mongoose.connect(process.env.dbURI);
+        console.log(`MongoDB connected to ${conn.connection.host}`);
+    }
+    catch (error) {
+        console.error(error);
+        process.exit(1);
+    }
 });
-const findSuperUser = () => __awaiter(void 0, void 0, void 0, function* () {
-    const user = yield SuperAdmin.find({});
-    return user;
-});
-module.exports = { createSuperHandler, findSuperUser };
-//# sourceMappingURL=superAdmin.service.js.map
+module.exports = connectDB;
+//# sourceMappingURL=database.js.map

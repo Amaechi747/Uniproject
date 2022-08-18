@@ -12,14 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createSuperUser = void 0;
 const express_async_handler_1 = __importDefault(require("express-async-handler"));
 const utils_1 = require("../utils/utils");
-const Super = require('../models/superAdmin.model');
-const superAdmin_service_1 = require("../services/superAdmin.service");
+const { createSuperHandler, findSuperUser, } = require("../services/superAdmin.service");
 const createSuperUser = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { firstname, lastname, email, password, phone, confirmPassword } = req.body;
-    console.log(req.body);
     yield (0, utils_1.superAdminValidator)().validateAsync({
         firstname: firstname,
         lastname: lastname,
@@ -32,11 +29,13 @@ const createSuperUser = (0, express_async_handler_1.default)((req, res) => __awa
         res.status(401);
         throw new Error("Passwords do not match");
     }
-    const existingUser = yield Super.findOne({ email });
-    console.log(existingUser);
+    const existingData = yield findSuperUser();
+    if (existingData.length > 0) {
+        res.status(401);
+        throw new Error("Super admin already exist");
+    }
     const hashedPass = yield (0, utils_1.passwordHandler)(password);
-    const createData = yield (0, superAdmin_service_1.createSuperHandler)(firstname, lastname, email, hashedPass, phone);
-    console.log(createData);
+    const createData = yield createSuperHandler(firstname, lastname, email, hashedPass, phone);
     const token = (0, utils_1.generateSuperAdminToken)(createData._id);
     res.cookie("Token", token);
     res.cookie("Id", createData._id);
@@ -46,5 +45,5 @@ const createSuperUser = (0, express_async_handler_1.default)((req, res) => __awa
         token: token,
     });
 }));
-exports.createSuperUser = createSuperUser;
+module.exports = { createSuperUser };
 //# sourceMappingURL=superAdmin.controller.js.map

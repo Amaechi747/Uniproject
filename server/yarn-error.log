@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/decagon/.volta/tools/image/node/16.15.0/bin/node /Users/decagon/.yarn/bin/yarn.js add @types/express-async-handler
+  /Users/decagon/.volta/tools/image/node/16.15.0/bin/node /Users/decagon/.yarn/bin/yarn.js
 
 PATH: 
   /Users/decagon/.volta/tools/image/yarn/1.22.18/bin:/Users/decagon/.volta/tools/image/node/16.15.0/bin:/Users/decagon/.yarn/bin:/Users/decagon/.config/yarn/global/node_modules/.bin:/Users/decagon/.volta/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/decagon/.yarn/bin:/Users/decagon/.config/yarn/global/node_modules/.bin:/Users/decagon/.volta/bin
@@ -14,17 +14,12 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fexpress-async-handler: Not found
-      at Request.params.callback [as _callback] (/Users/decagon/.yarn/lib/cli.js:66145:18)
-      at Request.self.callback (/Users/decagon/.yarn/lib/cli.js:140890:22)
-      at Request.emit (node:events:527:28)
-      at Request.<anonymous> (/Users/decagon/.yarn/lib/cli.js:141862:10)
-      at Request.emit (node:events:527:28)
-      at IncomingMessage.<anonymous> (/Users/decagon/.yarn/lib/cli.js:141784:12)
-      at Object.onceWrapper (node:events:641:28)
-      at IncomingMessage.emit (node:events:539:35)
-      at endReadableNT (node:internal/streams/readable:1345:12)
-      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+  SyntaxError: /Users/decagon/Desktop/The Gym/uniproject/Uniproject/package.json: Unexpected token < in JSON at position 359
+      at JSON.parse (<anonymous>)
+      at /Users/decagon/.yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/Users/decagon/.yarn/lib/cli.js:310:30)
+      at /Users/decagon/.yarn/lib/cli.js:321:13
 
 npm manifest: 
   {

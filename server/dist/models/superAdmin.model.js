@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const superAdmin = require("mongoose");
 const superAdminData = superAdmin.Schema({
     firstname: {
@@ -26,6 +25,5 @@ const superAdminData = superAdmin.Schema({
 }, {
     timestamps: true,
 });
-const SuperAdmin = superAdmin.model("SuperUser", superAdminData);
-exports.default = superAdmin;
+module.exports = superAdmin.model("SuperUser", superAdminData);
 //# sourceMappingURL=superAdmin.model.js.map
