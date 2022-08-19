@@ -14,7 +14,7 @@ const dummyAgent: AgentReg = {
 function createAgent(agent: AgentReg): output<Document<AgentReg>, unknown> {
     let agentOutput: output<Document<AgentReg> , unknown> = {result: null, error: null};
     const newAgent = new Agent(agent);
-    newAgent.save((err, savedAgent: Document<any, AgentReg>) => {
+    newAgent.save((err:any, savedAgent: Document<any, AgentReg>) => {
         if (err) {
             agentOutput.error = err;
         } else {
@@ -38,7 +38,7 @@ function getAllAgents(): Promise<output<AgentReg[], unknown>> {
             return agent.toObject();
         })
         return agentOutput;
-    }).catch((err) => {
+    }).catch((err:any) => {
         agentOutput.error = err;
         return agentOutput;
     });
@@ -48,7 +48,7 @@ function getAgentById(id: string): Promise<output<AgentReg, unknown>> {
     return Agent.findById(id).then((agent: any) => {
         agentOutput.result = agent;
         return agentOutput;
-    }).catch((err) => {
+    }).catch((err:any) => {
         agentOutput.error = err;
         return agentOutput;
     });
@@ -65,7 +65,7 @@ function deleteAgent(id: string): Promise<output<AgentReg, unknown>> {
     return Agent.findByIdAndDelete(id).then((deletedAgent: any) => {
         agentOutput.result = deletedAgent;
         return agentOutput;
-    }).catch((err) => {
+    }).catch((err:any) => {
         agentOutput.error = err;
         return agentOutput;
     })

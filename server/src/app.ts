@@ -5,6 +5,7 @@ import logger from "morgan";
 
 import "dotenv/config";
 import agentsRouter from "./routes/agentRoute";
+import requestsRouter from "./routes/requestRoute";
 // const dotEnv = dotenv.config();
 
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/agents', agentsRouter);
+app.use('/requests', requestsRouter);
 
 
 // catch 404 and forward to error handler
@@ -58,4 +60,4 @@ app.use(function (
   });
 });
 
-export default app;
+

@@ -37,3 +37,11 @@ interface output<R, E> {
     error: E;
 
 }
+interface requestReg { 
+    _id?: string;
+    name: string;
+    email: string;
+    date: Date;
+    time: string;
+    phoneNumber: string;
+}
