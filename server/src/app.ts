@@ -11,7 +11,7 @@ import agentsRouter from "./routes/agentRoute";
 import path from 'path';
 
 import indexRouter from'./routes/index';
-import usersRouter from './routes/users';
+import usersRouter from "./routes/superadmin";
 import propertiesRouter from './routes/properties'
 const connectDB = require("./database/database");
 connectDB();
@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/superadmin', usersRouter);
 app.use('/agents', agentsRouter);
 app.use('/properties', propertiesRouter)
 
