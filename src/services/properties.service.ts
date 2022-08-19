@@ -19,4 +19,15 @@ const createProperty = async (
   return newProperty;
 };
 
-export { createProperty };
+const findProperties = async() => {
+  const properties = await Properties.find()
+  return properties
+}
+
+const getPropertyWithId = async(propertyId: string) => {
+  const property = await Properties.findById(propertyId)
+  if(!property) throw new Error('Property not Available');
+  return property;
+}
+
+export { createProperty, findProperties, getPropertyWithId };

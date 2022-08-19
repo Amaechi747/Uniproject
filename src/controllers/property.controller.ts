@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import asyncHandler from "express-async-handler";
 import { addPropertyValidator } from "../utils/utils";
-import { createProperty } from "../services/properties.service";
+import { createProperty, findProperties, getPropertyWithId } from "../services/properties.service";
 
 const addAProperty = asyncHandler(async (req: Request, res: Response) => {
   const { name, location, type, price, images, description } = req.body;
@@ -31,4 +31,39 @@ const addAProperty = asyncHandler(async (req: Request, res: Response) => {
   return;
 });
 
-export { addAProperty };
+const getPropertyController = {
+  async getProperties (req: Request, res: Response) {
+    try {
+      const properties = await findProperties()
+      return res.status(201).json({
+        message: "successful",
+        properties
+      })
+    } catch (error) {
+      return res.status(401).json({
+        message: 'failed',
+        error
+      })
+    }
+  },
+async getProperty (req: Request, res: Response) {
+  try {
+    const {propertyId} = req.params;
+    const property = await getPropertyWithId(propertyId);
+    return res.status(201).json({
+      message: "successful",
+      property
+    })
+  } catch (error) {
+    return res.status(401).json({
+      message: 'failed',
+      error
+    })
+  }
+}
+
+}
+
+export { addAProperty, getPropertyController };
+  
+

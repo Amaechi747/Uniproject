@@ -11,6 +11,7 @@ import path from 'path';
 
 import indexRouter from'./routes/index';
 import usersRouter from './routes/users';
+import propertiesRouter from './routes/properties'
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/agents', agentsRouter);
+app.use('/properties', propertiesRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
