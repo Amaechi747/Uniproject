@@ -10,9 +10,9 @@
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/cookie-parser": "^1.4.3",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/http-errors": "^1.8.2",
-
     "@types/joi": "^17.2.3",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/mongoose": "^5.11.97",
@@ -21,7 +21,6 @@
     "@types/validator": "^13.7.5",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
-
     "cookie-parser": "^1.4.6",
     "debug": "^4.3.4",
     "dotenv": "^16.0.1",
@@ -31,13 +30,11 @@
     "googleapis": "^105.0.0",
     "http-errors": "^2.0.0",
     "jade": "~1.11.0",
-
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.2",
     "morgan": "^1.10.0",
     "nodemailer": "^6.7.8",
-
     "typescript": "^4.7.4",
     "validator": "^13.7.0"
   },
