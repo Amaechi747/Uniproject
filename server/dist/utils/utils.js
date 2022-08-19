@@ -37,6 +37,8 @@ const addPropertyValidator = () => {
         type: Joi.string().required(),
         price: Joi.number().required(),
         description: Joi.string().required(),
+        listed: Joi.boolean().required(),
+        images: Joi.string().required(),
     });
 };
 exports.addPropertyValidator = addPropertyValidator;

@@ -19,11 +19,12 @@ const propertySchema = new Property.Schema({
         type: Number,
         required: true,
     },
-    images: [String],
     description: {
         type: String,
         required: true,
     },
+    listed: Boolean,
+    images: { type: String },
 });
 const Properties = Property.model("Properties", propertySchema);
 exports.Properties = Properties;

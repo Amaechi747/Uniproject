@@ -22,13 +22,14 @@ const Signin = (props: Props) => {
 
     axios.post('/api/v1/auth/signin', { email, password })
       .then(res => {
-        swal("Success", "You have successfully signed up", "success")
+        swal("Success", "You have successfully signed in", "success")
       }).catch(err => {
         swal("Error", "Something went wrong", "error")
       }
       )
 
   }
+
   return (
     <div className="container" style={{width: '50%', padding: '5rem 0'}}>
       <h3>Sign In</h3>

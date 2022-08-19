@@ -80,7 +80,7 @@ const Signup: React.FC = (props) => {
           <input type="password" className="form-control" id="exampleFormControlInput6" placeholder="Enter Confirm Password" onChange={(e) => handleChange(e)} value={formData.passwordConfirm} name="passwordConfirm" />
         </div>
         {
-          formData.password.length != formData.passwordConfirm.length ?
+          formData.password !== formData.passwordConfirm ?
             <p style={{ color: 'red' }}>Confirm Password and Password must match</p> :
             formData.passwordConfirm.length === 0 ? <p style={{ color: 'red' }}>Confirm Password cannot be empty</p> :
               <p style={{ color: 'green' }}>Match</p>

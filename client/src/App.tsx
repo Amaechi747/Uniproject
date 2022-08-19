@@ -1,6 +1,6 @@
 // import './App.css';
 import { Routes, Route } from "react-router-dom"
-import { Signup, Signin } from './auth';
+import { Signup, Signin } from './components/auth';
 import { Home, About, Contact } from "./pages"
 import { Navbar, Footer } from "./components"
 
