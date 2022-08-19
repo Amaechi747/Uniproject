@@ -15,7 +15,7 @@ connectDB();
 
 
 import indexRouter from "./routes/index";
-import usersRouter from "./routes/users";
+import usersRouter from "./routes/superadmin";
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/superadmin', usersRouter);
 app.use('/agents', agentsRouter);
 
 
