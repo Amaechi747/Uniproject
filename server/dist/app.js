@@ -11,10 +11,11 @@ require("dotenv/config");
 const agentRoute_1 = __importDefault(require("./routes/agentRoute"));
 // const dotEnv = dotenv.config();
 const path_1 = __importDefault(require("path"));
-const connectDB = require("./database/database");
-connectDB();
 const index_1 = __importDefault(require("./routes/index"));
 const superadmin_1 = __importDefault(require("./routes/superadmin"));
+const properties_1 = __importDefault(require("./routes/properties"));
+const connectDB = require("./database/database");
+connectDB();
 const app = (0, express_1.default)();
 // view engine setup
 app.set("views", path_1.default.join(__dirname, "views"));
@@ -27,6 +28,7 @@ app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
 app.use('/', index_1.default);
 app.use('/superadmin', superadmin_1.default);
 app.use('/agents', agentRoute_1.default);
+app.use('/properties', properties_1.default);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next((0, http_errors_1.default)(404));

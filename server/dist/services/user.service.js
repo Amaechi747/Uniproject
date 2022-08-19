@@ -59,4 +59,4 @@ const userServices = {
     })
 };
 exports.userServices = userServices;
-//# sourceMappingURL=users.js.map
+//# sourceMappingURL=user.service.js.map
