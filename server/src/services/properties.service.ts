@@ -6,6 +6,7 @@ const createProperty = async (
   type: string,
   price: number,
   description: string,
+  listed: boolean,
   images?: string
 ) => {
   const newProperty = await Properties.create({
@@ -14,14 +15,26 @@ const createProperty = async (
     type,
     price,
     description,
+    listed,
     images,
   });
   return newProperty;
 };
 
-const viewAllProperties = async () => {
-  const getProperties = await Properties.find({}, { _id: 0, __v: 0 });
-  return getProperties;
+const viewAllProperties = async (status: string) => {
+  if (status === "true") {
+    const getProperties = await Properties.find(
+      { listed: status },
+      { _id: 0, __v: 0 }
+    );
+    return getProperties;
+  } else {
+    const getProperties = await Properties.find(
+      { listed: status },
+      { _id: 0, __v: 0 }
+    );
+    return getProperties;
+  }
 };
 
 export { createProperty, viewAllProperties };
