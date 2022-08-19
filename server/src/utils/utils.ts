@@ -25,6 +25,7 @@ const addPropertyValidator = () => {
     location: Joi.string().required(),
     type: Joi.string().required(),
     price: Joi.number().required(),
+    images: Joi.string().required(),
     description: Joi.string().required(),
   });
 };
