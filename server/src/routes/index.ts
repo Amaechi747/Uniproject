@@ -4,6 +4,6 @@ import { getAllProperties } from "../controllers/property.controller";
 
 /* GET users listing. */
 
-router.get("/viewproperties", getAllProperties);
+router.get("/viewproperties/:status", getAllProperties);
 
 export default router;

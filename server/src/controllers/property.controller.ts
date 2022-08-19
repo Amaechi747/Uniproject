@@ -7,7 +7,7 @@ import {
 } from "../services/properties.service";
 
 const addAProperty = asyncHandler(async (req: Request, res: Response) => {
-  const { name, location, type, price, images, description } = req.body;
+  const { name, location, type, price, images, listed, description } = req.body;
 
   await addPropertyValidator().validateAsync({
     name,
@@ -15,6 +15,7 @@ const addAProperty = asyncHandler(async (req: Request, res: Response) => {
     type,
     price,
     description,
+    listed,
     images,
   });
 
@@ -24,6 +25,7 @@ const addAProperty = asyncHandler(async (req: Request, res: Response) => {
     type,
     price,
     description,
+    listed,
     images
   );
   res.status(201).json({
@@ -36,7 +38,8 @@ const addAProperty = asyncHandler(async (req: Request, res: Response) => {
 });
 
 const getAllProperties = asyncHandler(async (req: Request, res: Response) => {
-  const allProperties = await viewAllProperties();
+  const status = req.params.status;
+  const allProperties = await viewAllProperties(status);
 
   res.status(200).json({
     status: "Successful",

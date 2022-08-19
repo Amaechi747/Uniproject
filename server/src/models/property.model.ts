@@ -21,6 +21,7 @@ const propertySchema = new Property.Schema({
     type: String,
     required: true,
   },
+  listed: Boolean,
   images: { type: String },
 });
 

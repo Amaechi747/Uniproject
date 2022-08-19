@@ -17,16 +17,17 @@ const express_async_handler_1 = __importDefault(require("express-async-handler")
 const utils_1 = require("../utils/utils");
 const properties_service_1 = require("../services/properties.service");
 const addAProperty = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, location, type, price, images, description } = req.body;
+    const { name, location, type, price, images, listed, description } = req.body;
     yield (0, utils_1.addPropertyValidator)().validateAsync({
         name,
         location,
         type,
         price,
         description,
+        listed,
         images,
     });
-    const newListing = yield (0, properties_service_1.createProperty)(name, location, type, price, description, images);
+    const newListing = yield (0, properties_service_1.createProperty)(name, location, type, price, description, listed, images);
     res.status(201).json({
         status: "Successful",
         message: {
@@ -37,7 +38,8 @@ const addAProperty = (0, express_async_handler_1.default)((req, res) => __awaite
 }));
 exports.addAProperty = addAProperty;
 const getAllProperties = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const allProperties = yield (0, properties_service_1.viewAllProperties)();
+    const status = req.params.status;
+    const allProperties = yield (0, properties_service_1.viewAllProperties)(status);
     res.status(200).json({
         status: "Successful",
         message: {

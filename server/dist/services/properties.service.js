@@ -11,21 +11,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.viewAllProperties = exports.createProperty = void 0;
 const property_model_1 = require("../models/property.model");
-const createProperty = (name, location, type, price, description, images) => __awaiter(void 0, void 0, void 0, function* () {
+const createProperty = (name, location, type, price, description, listed, images) => __awaiter(void 0, void 0, void 0, function* () {
     const newProperty = yield property_model_1.Properties.create({
         name,
         location,
         type,
         price,
         description,
+        listed,
         images,
     });
     return newProperty;
 });
 exports.createProperty = createProperty;
-const viewAllProperties = () => __awaiter(void 0, void 0, void 0, function* () {
-    const getProperties = yield property_model_1.Properties.find({}, { _id: 0, __v: 0 });
-    return getProperties;
+const viewAllProperties = (status) => __awaiter(void 0, void 0, void 0, function* () {
+    if (status === "true") {
+        const getProperties = yield property_model_1.Properties.find({ listed: status }, { _id: 0, __v: 0 });
+        return getProperties;
+    }
+    else {
+        const getProperties = yield property_model_1.Properties.find({ listed: status }, { _id: 0, __v: 0 });
+        return getProperties;
+    }
 });
 exports.viewAllProperties = viewAllProperties;
 //# sourceMappingURL=properties.service.js.map

@@ -7,6 +7,6 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const property_controller_1 = require("../controllers/property.controller");
 /* GET users listing. */
-router.get("/viewproperties", property_controller_1.getAllProperties);
+router.get("/viewproperties/:status", property_controller_1.getAllProperties);
 exports.default = router;
 //# sourceMappingURL=index.js.map
