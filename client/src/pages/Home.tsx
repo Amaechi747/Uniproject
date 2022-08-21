@@ -1,5 +1,5 @@
 import React from 'react'
-import { Carousel, BannerSearch, FeaturedProperties } from "../components"
+import { Carousel } from "../components"
 
 type Props = {}
 
@@ -8,8 +8,6 @@ const Home = (props: Props) => {
     <div>
       
       <Carousel />
-      <BannerSearch />
-      <FeaturedProperties />
     </div>
   )
 }

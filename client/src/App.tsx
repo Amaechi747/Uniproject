@@ -1,9 +1,4 @@
-// import './App.css';
-<<<<<<< Updated upstream
-import React from "react"
-=======
 import React from "react";
->>>>>>> Stashed changes
 import { Routes, Route } from "react-router-dom"
 import { Signup, Signin } from './components/auth';
 import { Home, About, Contact } from "./pages"
