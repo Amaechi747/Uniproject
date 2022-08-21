@@ -1,7 +1,7 @@
 .carousel {
-    width: 60%;
     height: 700px;
-    background-color: black;
+    background-color: grey;
+    padding: 4rem;
 }
 
 .carouselInner {
