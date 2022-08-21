@@ -1,10 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
+import { loginController, signUpController } from "../controllers/userController";
 const router = express.Router();
-
-const { createSuperUser } = require("../controllers/superAdmin.controller");
-
 /* GET users listing. */
-
-router.post("/superadmin/create", createSuperUser);
-
+router.post('/signup', signUpController);
+router.post('/login', loginController)
 export default router;

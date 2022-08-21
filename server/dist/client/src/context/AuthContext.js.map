@@ -1,1 +1,0 @@
-{"version":3,"file":"AuthContext.js","sourceRoot":"","sources":["../../../../client/src/context/AuthContext.tsx"],"names":[],"mappings":";;;;;AAAA,kDAAyB;AAIzB,MAAM,WAAW,GAAG,CAAC,KAAY,EAAE,EAAE;IACnC,OAAO,CACL,CAAC,GAAG,CAAC,WAAW,EAAE,GAAG,CAAC,CACvB,CAAA;AACH,CAAC,CAAA;AAED,kBAAe,WAAW,CAAA"}

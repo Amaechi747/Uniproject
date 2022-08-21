@@ -15,13 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userServices = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const userSchema_1 = require("../models/userSchema");
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const userServices = {
     errorCode: 501,
-    passwordCheck(password, passwordConfirm) {
+    passwordCheck(user) {
+        const { password, passwordConfirm } = user;
         if (password !== passwordConfirm) {
             this.errorCode = 401;
             throw new Error('Password and Passord Confirm are not the same');
+            return 0;
         }
+        return 1;
     },
     login(userRequest) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -31,8 +35,8 @@ const userServices = {
                 throw new Error('email or password not supplied');
             }
             ;
-            const user = yield (0, userSchema_1.findUserByEmail)(email);
-            if (!user || !(yield (0, userSchema_1.correctPasswordCheck)(password, user.password))) {
+            const user = yield this.findUserByEmail(email);
+            if (!user || !(yield this.correctPasswordCheck(password, user.password))) {
                 this.errorCode = 403;
                 throw new Error('Username or Password Incorrect.');
             }
@@ -44,7 +48,15 @@ const userServices = {
         return jsonwebtoken_1.default.sign(id, `${process.env.secretKey}`, {
             expiresIn: 90
         });
-    }
+    },
+    correctPasswordCheck: function (password, userPassword) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield bcrypt_1.default.compare(password, userPassword);
+        });
+    },
+    findUserByEmail: (email) => __awaiter(void 0, void 0, void 0, function* () {
+        return yield userSchema_1.User.findOne({ email });
+    })
 };
 exports.userServices = userServices;
 //# sourceMappingURL=users.js.map

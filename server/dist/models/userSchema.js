@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = exports.findUserByEmail = exports.correctPasswordCheck = void 0;
+exports.User = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const validator_1 = __importDefault(require("validator"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
@@ -68,6 +68,7 @@ const userSchema = new mongoose_1.default.Schema({
     toObject: { virtuals: true },
     toJSON: { virtuals: true }
 });
+//hash password before saving to database
 userSchema.pre('save', function (next) {
     return __awaiter(this, void 0, void 0, function* () {
         if (this.password === this.passwordConfirm) {
@@ -77,33 +78,27 @@ userSchema.pre('save', function (next) {
         }
     });
 });
+//if its not a new user and password is modified
 userSchema.pre('save', function (next) {
     if (!this.isModified('password') || this.isNew)
         return next();
     this.passwordChangedAt = new Date(Date.now() - 1000);
     next();
 });
+//check if user status is active before returning user
 userSchema.pre('find', function (next) {
     this.find({ active: { $ne: false } });
     next();
 });
+//check if user status is active before returning user
 userSchema.pre('findOne', function (next) {
     this.find({ active: { $ne: false } });
     next();
 });
+//check if user status is active before returning user
 userSchema.pre('findById', function (next) {
     this.find({ active: { $ne: false } });
     next();
 });
-const correctPasswordCheck = function (password, userPassword) {
-    return __awaiter(this, void 0, void 0, function* () {
-        return yield bcrypt_1.default.compare(password, userPassword);
-    });
-};
-exports.correctPasswordCheck = correctPasswordCheck;
-const findUserByEmail = (email) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield exports.User.findOne({ email });
-});
-exports.findUserByEmail = findUserByEmail;
 exports.User = mongoose_1.default.model('User', userSchema);
 //# sourceMappingURL=userSchema.js.map

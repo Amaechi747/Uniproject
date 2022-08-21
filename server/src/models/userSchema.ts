@@ -59,6 +59,7 @@ const userSchema = new mongoose.Schema({
     toJSON: {virtuals: true }
   })
 
+  //hash password before saving to database
 userSchema.pre('save', async function(next){
     if(this.password === this.passwordConfirm){
         this.password = await bcrypt.hash(this.password, 10);
@@ -67,33 +68,29 @@ userSchema.pre('save', async function(next){
     }
 })
 
+//if its not a new user and password is modified
 userSchema.pre('save', function(next){
     if(!this.isModified('password') || this.isNew) return next();
     this.passwordChangedAt = new Date(Date.now() - 1000);
     next()
 })
 
+//check if user status is active before returning user
 userSchema.pre('find', function(next){
     this.find({active: {$ne: false}});
     next()
 })
 
+//check if user status is active before returning user
 userSchema.pre('findOne', function(next){
     this.find({active: {$ne: false}});
     next()
 })
 
+//check if user status is active before returning user
 userSchema.pre('findById', function(next){
     this.find({active: {$ne: false}});
     next()
 })
-
-export const correctPasswordCheck = async function(password: string, userPassword: string){
-    return await bcrypt.compare(password, userPassword)
-}
-
-export const findUserByEmail = async(email: string) => {
-    return await User.findOne({email});
-}
 
 export const User = mongoose.model('User', userSchema);

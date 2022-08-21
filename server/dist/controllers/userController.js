@@ -11,21 +11,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginController = exports.signUpController = void 0;
 const userSchema_1 = require("../models/userSchema");
-const users_1 = require("../services/users");
+const user_service_1 = require("../services/user.service");
 const signUpController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { firstName, lastName, phone, password, passwordConfirm, address, email } = req.body;
-        users_1.userServices.passwordCheck(password, passwordConfirm);
+        user_service_1.userServices.passwordCheck(req.body);
         const newUser = yield userSchema_1.User.create({ firstName, lastName, phone, password, passwordConfirm, address, email, createdAt: Date.now() }, { new: true });
-        res.status(201).json({
+        return res.status(201).json({
             status: 'Successful',
-            data: {
-                newUser
-            }
+            data: newUser
         });
     }
     catch (error) {
-        res.status(users_1.userServices.errorCode).json({
+        return res.status(user_service_1.userServices.errorCode).json({
             status: 'failed',
             error
         });
@@ -34,11 +32,11 @@ const signUpController = (req, res) => __awaiter(void 0, void 0, void 0, functio
 exports.signUpController = signUpController;
 const loginController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const user = yield users_1.userServices.login(req.body);
+        const user = yield user_service_1.userServices.login(req.body);
         let token = '';
         if (user)
-            token = users_1.userServices.signToken(user.id);
-        res.status(200).json({
+            token = user_service_1.userServices.signToken(user.id);
+        return res.status(200).json({
             status: 'Successful',
             data: {
                 user,
@@ -47,7 +45,7 @@ const loginController = (req, res) => __awaiter(void 0, void 0, void 0, function
         });
     }
     catch (error) {
-        res.status(users_1.userServices.errorCode).json({
+        return res.status(user_service_1.userServices.errorCode).json({
             status: 'failed',
             error
         });

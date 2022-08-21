@@ -11,10 +11,12 @@ require("dotenv/config");
 const agentRoute_1 = __importDefault(require("./routes/agentRoute"));
 // const dotEnv = dotenv.config();
 const path_1 = __importDefault(require("path"));
+const index_1 = __importDefault(require("./routes/index"));
+const superadmin_1 = __importDefault(require("./routes/superadmin"));
+const properties_1 = __importDefault(require("./routes/properties"));
+const users_1 = __importDefault(require("./routes/users"));
 const connectDB = require("./database/database");
 connectDB();
-const index_1 = __importDefault(require("./routes/index"));
-const users_1 = __importDefault(require("./routes/users"));
 const app = (0, express_1.default)();
 // view engine setup
 app.set("views", path_1.default.join(__dirname, "views"));
@@ -25,12 +27,20 @@ app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
 app.use('/', index_1.default);
-app.use('/users', users_1.default);
+app.use('/superadmin', superadmin_1.default);
 app.use('/agents', agentRoute_1.default);
+app.use('/properties', properties_1.default);
+app.use('/users', users_1.default);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next((0, http_errors_1.default)(404));
 });
+if (process.env.NODE_ENV === "production") {
+    app.use(express_1.default.static(path_1.default.resolve(__dirname, "../client/build")));
+    app.get("*", (req, res) => {
+        res.sendFile(path_1.default.resolve(__dirname, "../client", "build", "index.html"));
+    });
+}
 // error handler
 app.use(function (err, req, res, next) {
     // set locals, only providing error in development
