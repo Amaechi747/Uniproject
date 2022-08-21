@@ -1,4 +1,5 @@
 import React from 'react'
+import { facebook, twitter, linkedin, instagram } from "../images"
 
 type Props = {}
 
@@ -31,10 +32,10 @@ const Footer = (props: Props) => {
 
           <div className="col-lg-3 col-sm-3">
             <h4>Follow us</h4>
-            <a href="#"><img src={"../images/facebook.png"} alt="facebook" /></a>
-            <a href="#"><img src={"images/twitter.png"} alt="twitter" /> </a>
-            <a href="#"><img src={"images/linkedin.png"} alt="linkedin" /></a>
-            <a href="#"><img src={"images/instagram.png"} alt="instagram " /></a>
+            <a href="#"><img src={facebook} alt="facebook" /></a>
+            <a href="#"><img src={twitter} alt="twitter" /> </a>
+            <a href="#"><img src={linkedin} alt="linkedin" /></a>
+            <a href="#"><img src={instagram} alt="instagram " /></a>
           </div>
 
           <div className="col-lg-3 col-sm-3">
