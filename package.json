@@ -3,14 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "16.5.5",
-    "npm": "8.5.5"
+    "node": "16.5",
+    "npm": "8.5",
+    "yarn": "1.22"
   },
   "scripts": {
     "start": "node ./server/bin/www",
     "serve": "nodemon ./server/bin/www",
     "dev": "DEBUG=uniproject nodemon ./server/bin/www",
-    "heroku-postbuild": " npm install --prefix client && npm run build --prefix client "
+    "heroku-postbuild": " npm install --force --prefix client && npm run build --prefix client "
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
