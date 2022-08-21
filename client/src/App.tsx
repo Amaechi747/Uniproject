@@ -1,4 +1,5 @@
 // import './App.css';
+import React from "react"
 import { Routes, Route } from "react-router-dom"
 import { Signup, Signin } from './components/auth';
 import { Home, About, Contact } from "./pages"
