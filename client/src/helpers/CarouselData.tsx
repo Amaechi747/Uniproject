@@ -1,4 +1,4 @@
-import {city, salvador, ubc} from "../images";
+import { city, salvador, ubc } from "../images";
 
 export const images = [
   { title: "San Diego", subtitle: "This is San Diego", img: city },

@@ -48,8 +48,8 @@ table{background-color: #fff;}
 .navbar-inverse{background-color: #111;}
 .navbar-inverse .navbar-nav > li > a{font-size: 11px;padding-top: 10px;padding-bottom: 10px;font-family: din;text-transform: uppercase;}
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{background-color: #72b70f;}
-/* ../images/bginside.jpg */
-.banner-search{background:url(../../src/images/bginside.jpg) #111;color: #fff;padding: 20px 0 10px 0; font-size: 16px;}
+
+.banner-search{background:url(../images/bginside.jpg) #111;color: #fff;padding: 20px 0 10px 0; font-size: 16px;}
 .banner-search h3{color: #fff;}
 
 

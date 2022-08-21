@@ -165,19 +165,19 @@
 
 
  .bg-img-1 {
-	background-image: url(../../../../src/images/slider/1.jpg);
+	background-image: url(../../../images/slider/1.jpg);
 }
  .bg-img-2 {
-	background-image: url(../../../../src/images/slider/1.jpg);
+	background-image: url(../../../images/slider/2.jpg);
 }
  .bg-img-3 {
-	background-image: url(../../../../src/images/slider/1.jpg);
+	background-image: url(../../../images/slider/3.jpg);
 }
  .bg-img-4 {
-	background-image: url(../../../../src/images/slider/1.jpg);
+	background-image: url(../../../images/slider/4.jpg);
 }
  .bg-img-5 {
-	background-image: url(../../../../src/images/slider/1.jpg);
+	background-image: url(../../../images/slider/5.jpg);
 }
 
 /* Animations for content elements */
