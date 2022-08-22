@@ -35,12 +35,6 @@ app.use('/properties', propertiesRouter)
 
 app.use('/users', ordinaryUsersRouter)
 
-
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
-
 if(process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve(__dirname, "../client/build")));
 
@@ -49,22 +43,5 @@ if(process.env.NODE_ENV === "production") {
   });
 }
 
-// error handler
-app.use(function (
-  err: HttpError,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
-  console.log(err);
-  // render the error page
-  res.status(err.status || 500);
-  res.json({
-    message: err,
-  });
-});
 
 export default app;
