@@ -1,0 +1,1 @@
+{"version":3,"file":"properties.js","sourceRoot":"","sources":["../../server/src/routes/properties.ts"],"names":[],"mappings":";;;;;AAAA,sDAA8B;AAC9B,4EAAwF;AAExF,MAAM,MAAM,GAAG,iBAAO,CAAC,MAAM,EAAE,CAAC;AAEhC,MAAM,CAAC,GAAG,CAAC,GAAG,EAAE,2CAAqB,CAAC,aAAa,CAAC,CAAC;AACrD,MAAM,CAAC,GAAG,CAAC,cAAc,EAAE,2CAAqB,CAAC,WAAW,CAAC,CAAC;AAE9D,kBAAe,MAAM,CAAC"}
