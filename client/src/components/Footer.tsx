@@ -1,5 +1,4 @@
 import React from 'react'
-import { facebook, twitter, linkedin, instagram } from "../images"
 
 type Props = {}
 
@@ -30,13 +29,13 @@ const Footer = (props: Props) => {
               <button className="btn btn-success" type="button">Notify Me!</button></form>
           </div>
 
-          <div className="col-lg-3 col-sm-3">
+          {/* <div className="col-lg-3 col-sm-3">
             <h4>Follow us</h4>
             <a href="#"><img src={facebook} alt="facebook" /></a>
             <a href="#"><img src={twitter} alt="twitter" /> </a>
             <a href="#"><img src={linkedin} alt="linkedin" /></a>
             <a href="#"><img src={instagram} alt="instagram " /></a>
-          </div>
+          </div> */}
 
           <div className="col-lg-3 col-sm-3">
             <h4>Contact us</h4>
