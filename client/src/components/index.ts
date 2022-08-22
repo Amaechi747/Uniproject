@@ -5,6 +5,5 @@ export { default as Map } from "./Map";
 export { default as Navbar } from "./Navbar";
 export { default as Reviews } from "./Reviews";
 export { default as Search } from "./Search";
-export { default as Carousel } from "./Carousel";
 export { default as Pagination } from "./Pagination";
 export { default as Property } from "./Property";
