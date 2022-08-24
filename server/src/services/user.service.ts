@@ -27,21 +27,21 @@ const userServices = {
             const user = await this.findUserByEmail(email);
             if(!user || !await this.correctPasswordCheck(password, user.password)) {
                 this.errorCode = 403;
-                throw new Error ('Username or Password Incorrect.')
+                throw new Error ('Username or Password Incorrect.');
             };
             return user;  
     },
-    signToken: (id: string) => {
-        return jwt.sign(id, `${process.env.secretKey}`, {
-            expiresIn: 90
-        })
+    signToken (id: string) {
+        const token = jwt.sign(id, `${process.env.secretKey}`)
+        console.log(token)
+        return token
     },
 
-    correctPasswordCheck: async function(password: string, userPassword: string){
+    async correctPasswordCheck(password: string, userPassword: string){
         return await bcrypt.compare(password, userPassword)
     },
     
-    findUserByEmail: async(email: string) => {
+     async findUserByEmail(email: string) {
         return await User.findOne({email});
     }
 }

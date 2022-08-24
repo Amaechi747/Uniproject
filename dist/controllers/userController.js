@@ -35,8 +35,9 @@ const loginController = (req, res) => __awaiter(void 0, void 0, void 0, function
     try {
         const user = yield user_service_1.userServices.login(req.body);
         let token = '';
-        if (user)
-            token = user_service_1.userServices.signToken(user.id);
+        if (!user)
+            throw new Error('username or password invalid');
+        token = user_service_1.userServices.signToken(user.id);
         return res.status(200).json({
             status: 'Successful',
             data: {

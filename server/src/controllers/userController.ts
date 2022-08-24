@@ -25,8 +25,10 @@ export const signUpController = async(req: Request, res: Response)=>{
 export const loginController = async(req: Request, res: Response)=>{
     try {
        const user = await userServices.login(req.body);
+       
        let token: string = '';
-       if(user) token = userServices.signToken(user.id);
+       if(!user) throw new Error('username or password invalid');
+       token = userServices.signToken(user.id);
        return res.status(200).json({
         status: 'Successful',
         data: {

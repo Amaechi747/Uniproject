@@ -47,19 +47,21 @@ const userServices = {
             return user;
         });
     },
-    signToken: (id) => {
-        return jsonwebtoken_1.default.sign(id, `${process.env.secretKey}`, {
-            expiresIn: 90
-        });
+    signToken(id) {
+        const token = jsonwebtoken_1.default.sign(id, `${process.env.secretKey}`);
+        console.log(token);
+        return token;
     },
-    correctPasswordCheck: function (password, userPassword) {
+    correctPasswordCheck(password, userPassword) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield bcrypt_1.default.compare(password, userPassword);
         });
     },
-    findUserByEmail: (email) => __awaiter(void 0, void 0, void 0, function* () {
-        return yield userSchema_1.User.findOne({ email });
-    })
+    findUserByEmail(email) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield userSchema_1.User.findOne({ email });
+        });
+    }
 };
 exports.userServices = userServices;
 //# sourceMappingURL=user.service.js.map
