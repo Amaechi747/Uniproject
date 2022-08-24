@@ -38,14 +38,14 @@ const userSchema = new mongoose_1.default.Schema({
         required: true
     },
     address: {
-        type: Number,
+        type: String,
         required: true
     },
     password: {
         type: String,
         minlength: 8,
         required: true,
-        select: false
+        // select: false
     },
     role: {
         type: String,
