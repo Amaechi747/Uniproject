@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     imageUrl: String,
     phone: {
-        type: Number,
+        type: String,
         required: true
     },
     address: {
@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
         default: 'user'
     },
     passwordConfirm: {
-        type: String,
+        type: String
     
     },
     createdAt: Date,
@@ -61,11 +61,11 @@ const userSchema = new mongoose.Schema({
 
   //hash password before saving to database
 userSchema.pre('save', async function(next){
-    if(this.password === this.passwordConfirm){
+    if(this.password !== this.passwordConfirm) throw new Error ('Password and Password confirm not same')
         this.password = await bcrypt.hash(this.password, 10);
         this.passwordConfirm = undefined;
         next()
-    }
+    
 })
 
 //if its not a new user and password is modified

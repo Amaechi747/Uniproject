@@ -2,13 +2,13 @@ import express, { NextFunction, Request, Response } from "express";
 import createError, { HttpError } from "http-errors";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import path from 'path';
 
 import "dotenv/config";
 import agentsRouter from "./routes/agentRoute";
 // const dotEnv = dotenv.config();
 
 
-import path from 'path';
 
 import indexRouter from'./routes/index';
 import usersRouter from "./routes/superadmin";

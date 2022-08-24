@@ -6,15 +6,17 @@ import {userServices} from '../services/user.service'
 export const signUpController = async(req: Request, res: Response)=>{
     try {
         const {firstName, lastName, phone, password, passwordConfirm, address, email} = req.body;
-        userServices.passwordCheck(req.body)
-        const newUser = await User.create({firstName, lastName, phone, password, passwordConfirm, address, email, createdAt: Date.now()}, {new: true});
+        userServices.passwordCheck(req.body);
+       
+        const newUser = await User.create({firstName, lastName, phone, password, passwordConfirm, address, email});
         return res.status(201).json({
             status: 'Successful',
             data: newUser
         })
     } catch (error) {
-        return res.status(userServices.errorCode).json({
+        return res.status(401).json({
             status: 'failed',
+            message: "Please check your input fields and try again",
             error
         })
     } 

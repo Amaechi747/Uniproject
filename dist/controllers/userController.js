@@ -16,15 +16,16 @@ const signUpController = (req, res) => __awaiter(void 0, void 0, void 0, functio
     try {
         const { firstName, lastName, phone, password, passwordConfirm, address, email } = req.body;
         user_service_1.userServices.passwordCheck(req.body);
-        const newUser = yield userSchema_1.User.create({ firstName, lastName, phone, password, passwordConfirm, address, email, createdAt: Date.now() }, { new: true });
+        const newUser = yield userSchema_1.User.create({ firstName, lastName, phone, password, passwordConfirm, address, email });
         return res.status(201).json({
             status: 'Successful',
             data: newUser
         });
     }
     catch (error) {
-        return res.status(user_service_1.userServices.errorCode).json({
+        return res.status(401).json({
             status: 'failed',
+            message: "Please check your input fields and try again",
             error
         });
     }

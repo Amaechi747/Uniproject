@@ -19,13 +19,16 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const userServices = {
     errorCode: 501,
     passwordCheck(user) {
-        const { password, passwordConfirm } = user;
-        if (password !== passwordConfirm) {
-            this.errorCode = 401;
-            throw new Error('Password and Passord Confirm are not the same');
-            return 0;
+        try {
+            const { password, passwordConfirm } = user;
+            console.log('here');
+            if (password !== passwordConfirm) {
+                this.errorCode = 401;
+                throw new Error('Password and Passord Confirm are not the same');
+            }
+            return;
         }
-        return 1;
+        catch (error) { }
     },
     login(userRequest) {
         return __awaiter(this, void 0, void 0, function* () {

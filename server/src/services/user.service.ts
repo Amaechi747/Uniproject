@@ -7,13 +7,16 @@ import bcrypt from 'bcrypt'
 const userServices = {
     errorCode: 501,
     passwordCheck(user: any){
-        const {password, passwordConfirm} = user;
-        if(password !== passwordConfirm) {
-            this.errorCode = 401;
-            throw new Error ('Password and Passord Confirm are not the same');
-            return 0
-        }
-        return 1;
+        try {
+            const {password, passwordConfirm} = user;
+            console.log('here')
+           if(password !== passwordConfirm) {
+               this.errorCode = 401;
+               throw new Error ('Password and Passord Confirm are not the same');
+           }   
+           return
+        } catch (error) { }
+       
     }, 
     async login (userRequest: IUserLogin) {
             const {email, password} = userRequest;
